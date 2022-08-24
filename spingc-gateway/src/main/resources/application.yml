@@ -1,0 +1,55 @@
+server:
+  port: 10011
+  servlet:
+    context-path: /tao-api
+spring:
+  application:
+    name: tao-api-gates
+  servlet:
+    multipart:
+      max-file-size: 300MB
+      max-request-size: 300MB
+  cloud:
+    gateway:
+      httpclient:
+        websocket:
+          max-frame-payload-length: 10485760 #1024*1024*10
+      discovery:
+        locator:
+          enabled: true  #true ??????????????
+      routes:
+        - id: tao-ws-service
+          uri: lb://tao-ws-service
+          predicates:
+            - Path=/tao-api/wsSrv/**
+          filters:  #gateway???????
+            - StripPrefix=1
+        - id: tao-ws-service
+          uri: lb:ws://tao-ws-service/
+          predicates:
+            - Path=/tao-api/wsSrv/websocket/**
+          filters:  #gateway???????
+            - StripPrefix=1
+#??gateWay????
+management:
+  endpoint:
+    gateway:
+      enabled: false
+
+feign:
+  hystrix:
+    enabled: false
+  client:
+    config:
+      default:
+        loggerLevel: full
+        connectTimeout: 300000
+        readTimeout: 500000
+load-balanced-service:
+  ribbon:
+    # 负载地址
+    listOfServers: http://localhost:8072, http://localhost:8073
+    # 负载轮询策略
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RoundRobinRule
+    # 健康检查
+    NFLoadBalancerPingClassName: com.modules.scistor.config.HealthExamination

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="RemoteTargetsManager">
+    <targets>
+      <target name="root@192.168.181.128:22" type="ssh/sftp" uuid="20f23dd0-3214-4f3d-86c3-ef4ad815c45d">
+        <config>
+          <option name="projectRootOnTarget" value="/home/jar" />
+          <option name="serverName" value="root@192.168.181.128:22 password" />
+        </config>
+        <ContributedStateBase type="JavaLanguageRuntime">
+          <config>
+            <option name="homePath" value="/home/app/jdk11/jdk-11.0.13/" />
+            <option name="javaVersionString" value="11.0.13" />
+          </config>
+        </ContributedStateBase>
+      </target>
+      <target name="root@192.168.181.129:22" type="ssh/sftp" uuid="a5cec96c-a703-42bc-9e6f-077e6dbf73a5">
+        <config>
+          <option name="projectRootOnTarget" value="/home/jar" />
+          <option name="serverName" value="root@192.168.181.129:22 password" />
+        </config>
+        <ContributedStateBase type="JavaLanguageRuntime">
+          <config>
+            <option name="homePath" value="/home/app/jdk11/jdk-11.0.13" />
+            <option name="javaVersionString" value="11.0.13" />
+          </config>
+        </ContributedStateBase>
+      </target>
+    </targets>
+  </component>
+</project>

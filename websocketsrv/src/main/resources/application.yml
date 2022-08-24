@@ -1,0 +1,49 @@
+server:
+  port: 10099
+#?????
+g01:
+spring:
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 100MB
+#  kafka:
+#    listener:
+#      concurrency: 3                       #????????
+#      #      poll-timeout: 1500                   #?????????????????????timeout??????poll()?????????????????????????????????max.poll.records???
+#      missing-topics-fatal: false
+#      ack-mode: MANUAL_IMMEDIATE
+#    producer:
+#      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+#      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+#      properties:
+#        #        max.request.size: 5242880 #5M
+#        #        buffer.memory: 33554432 # 32M
+#        sasl.mechanism: PLAIN
+#        security.protocol: SASL_PLAINTEXT
+#        sasl.jaas.config: org.apache.kafka.common.security.plain.PlainLoginModule required username="admin" password="g011234";
+#    consumer:
+#      group-id: event-service-group
+#      auto-offset-reset: earliest
+#      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#      properties:
+#        sasl.mechanism: PLAIN
+#        security.protocol: SASL_PLAINTEXT
+#        sasl.jaas.config: org.apache.kafka.common.security.plain.PlainLoginModule required username="admin" password="g011234";
+#      fetch-min-size: 1000
+#      max-poll-records: 50
+  main:
+    allow-bean-definition-overriding: true
+
+feign:
+  hystrix:
+    enabled: false
+  client:
+    config:
+      default:
+        loggerLevel: full
+        connectTimeout: 30000
+        readTimeout: 50000
+taoqz:
+  name: tao-99

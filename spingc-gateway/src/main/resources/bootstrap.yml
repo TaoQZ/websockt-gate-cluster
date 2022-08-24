@@ -1,0 +1,23 @@
+spring:
+  application:
+    #配置文件名
+    name: tao-api-gates
+  cloud:
+    nacos:
+      discovery:
+        namespace: dev
+        server-addr: 192.168.10.65:8848
+        #配置健康检查时间间隔
+        heart-beat-interval: 15000
+        #健康检查失败多长时间取消注册
+        heart-beat-timeout: 30000
+      config:
+        #默认为public命名空间（进行环境隔离，指定不同环境）
+        namespace: dev
+        #服务器地址
+        server-addr: 192.168.10.65:8848
+        #配置文件后缀
+        file-extension: yml
+        shared-configs[0]: #公用配置文件
+          data-id: redis-common.yml
+          refresh: true #是否支持自动刷新
